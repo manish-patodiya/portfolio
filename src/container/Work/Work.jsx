@@ -37,38 +37,6 @@ const Work = () => {
             imgUrl: images.about02,
             tags:["UI/UX","All"],
           },
-          {
-            title: "Modern UI/UX Website",
-            description: "A Modern UI/UX Portfolio Website",
-            projectLink: "", 
-            codeLink: "",
-            imgUrl: images.about02,
-            tags:["UI/UX","All"],
-          },
-          {
-            title: "Modern UI/UX Website",
-            description: "A Modern UI/UX Portfolio Website",
-            projectLink: "", 
-            codeLink: "",
-            imgUrl: images.about02,
-            tags:["UI/UX","All"],
-          },
-          {
-            title: "Modern UI/UX Website",
-            description: "A Modern UI/UX Portfolio Website",
-            projectLink: "", 
-            codeLink: "",
-            imgUrl: images.about02,
-            tags:["UI/UX","All"],
-          },
-          {
-            title: "Modern UI/UX Website",
-            description: "A Modern UI/UX Portfolio Website",
-            projectLink: "", 
-            codeLink: "",
-            imgUrl: images.about02,
-            tags:["UI/UX","All"],
-          }
         ];
         setWorks(data);
         setFilterWork(data);

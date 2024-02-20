@@ -14,11 +14,6 @@ const About = () => {
       {title: "Backend Developement",description:"Building the backbone of websites with solid databases and efficient server-side logic. I ensure everything runs smoothly behind the scenes, so users can focus on what matters most.",imgUrl:images.about03},
       {title: "MERN Stack",description:"Bringing together MongoDB, Express.js, React, and Node.js to create dynamic web apps. I love using these tools to build responsive and modern websites that users love to explore.",imgUrl:images.about04}
     ]);
-  //   const query = '*[_type == "abouts"]';
-
-  //   client.fetch(query).then((data) => {
-  //     setAbouts(data);
-  //   });
   }, []);
 
   return (

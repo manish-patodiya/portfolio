@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import './Testimonial.scss';
+import { images } from '../../constants';
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,16 +16,13 @@ const Testimonial = () => {
   };
 
   useEffect(() => {
-    const query = '*[_type == "testimonials"]';
-    const brandsQuery = '*[_type == "brands"]';
-
-    // client.fetch(query).then((data) => {
-    //   setTestimonials(data);
-    // });
-
-    // client.fetch(brandsQuery).then((data) => {
-    //   setBrands(data);
-    // });
+    setTestimonials([
+      {name:"Deepak Saini",imgurl:"",designation:"Full Stack Developer",feedback:"Masterful Full Stack Developer, seamlessly integrating frontend and backend magic."},
+      {name:"Jainam Doshi",imgurl:images.jainam_doshi,designation:"Freelancer | Photographer",feedback:"Reliable freelancer delivering quality work on time, every time."},
+      {name:"Rushil Kakadiya",imgurl:images.rushil_kakadiya,designation:"Android App Developer",feedback:"Top-tier Android app development skills, consistently exceeding expectations."},
+      {name:"Uttam Bhalara",imgurl:images.uttam_bhalara,designation:"Web Developer",feedback:"Web development wizard, turning visions into stunning online realities."},
+    ]);
+    // setBrands(data);
   }, []);
 
   return (
@@ -37,7 +35,7 @@ const Testimonial = () => {
               <p className="p-text">{testimonials[currentIndex].feedback}</p>
               <div>
                 <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
-                <h5 className="p-text">{testimonials[currentIndex].company}</h5>
+                <h5 className="p-text">{testimonials[currentIndex].designation}</h5>
               </div>
             </div>
           </div>
@@ -54,7 +52,7 @@ const Testimonial = () => {
         </>
       )}
 
-      <div className="app__testimonial-brands app__flex">
+      {/* <div className="app__testimonial-brands app__flex">
         {brands.map((brand) => (
           <motion.div
             whileInView={{ opacity: [0, 1] }}
@@ -64,7 +62,7 @@ const Testimonial = () => {
             <img src={brand.imgUrl} alt={brand.name} />
           </motion.div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 };

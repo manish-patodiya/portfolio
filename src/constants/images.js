@@ -38,6 +38,10 @@ import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
 
+import uttam_bhalara from "../assets/uttam_bhalara.jpg";
+import rushil_kakadiya from "../assets/rushil_kakadiya.jpg";
+import jainam_doshi from "../assets/jainam_doshi.jpg";
+
 export default {
   php,
   bootstrap,
@@ -75,4 +79,7 @@ export default {
   nb,
   skype,
   spotify,
+  uttam_bhalara,
+  rushil_kakadiya,
+  jainam_doshi,
 };

@@ -19,6 +19,7 @@ const Skills = () => {
       {name:"PHP",icon:images.php,bgColor:""},
       {name:"HTML",icon:images.html,bgColor:""},
       {name:"Flutter",icon:images.flutter,bgColor:""},
+      {name:"Bootstrap",icon:images.bootstrap,bgColor:""},
       {name:"Git",icon:images.git,bgColor:""},
       {name:"CSS",icon:images.css,bgColor:""},
       {name:"API",icon:images.api,bgColor:""},

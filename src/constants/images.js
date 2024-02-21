@@ -1,4 +1,5 @@
 import php from "../assets/php.png";
+import bootstrap from "../assets/bootstrap.png";
 import java from "../assets/java.png";
 import email from "../assets/email.png";
 import mobile from "../assets/mobile.png";
@@ -39,6 +40,7 @@ import spotify from "../assets/spotify.png";
 
 export default {
   php,
+  bootstrap,
   java,
   email,
   mobile,

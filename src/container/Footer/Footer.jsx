@@ -25,13 +25,12 @@ const Footer = () => {
       email: formData.email,
       message: formData.message,
     };
-
-    // client.create(contact)
-    //   .then(() => {
-    //     setLoading(false);
-    //     setIsFormSubmitted(true);
-    //   })
-    //   .catch((err) => console.log(err));
+  
+    console.log(contact)
+    setTimeout(() => {
+      setLoading(false);
+      setIsFormSubmitted(true);
+    }, 2000);
   };
 
   return (
@@ -41,11 +40,11 @@ const Footer = () => {
       <div className="app__footer-cards">
         <div className="app__footer-card ">
           <img src={images.email} alt="email" />
-          <a href="mailto:hello@micael.com" className="p-text">hello@micael.com</a>
+          <a href="mailto:mpatodiya2@gmail.com" className="p-text">mpatodiya2@gmail.com</a>
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="phone" />
-          <a href="tel:+1 (123) 456-7890" className="p-text">+1 (123) 456-7890</a>
+          <a href="tel:+91 960 206 5385" className="p-text">+91 960 206 5385</a>
         </div>
       </div>
       {!isFormSubmitted ? (

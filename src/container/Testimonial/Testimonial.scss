@@ -5,7 +5,7 @@
 }
 
 .app__testimonial-item {
-  width: 60%;
+  width: 50%;
   min-height: 320px;
   background-color: var(--white-color);
   display: flex;
@@ -17,8 +17,8 @@
   transition: all 0.3s ease-in-out;
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 175px;
+    height: 175px;
     border-radius: 50%;
     object-fit: cover;
   }

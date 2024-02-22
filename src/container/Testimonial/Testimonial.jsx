@@ -17,7 +17,7 @@ const Testimonial = () => {
 
   useEffect(() => {
     setTestimonials([
-      {name:"Deepak Saini",imgurl:"",designation:"Full Stack Developer",feedback:"Masterful Full Stack Developer, seamlessly integrating frontend and backend magic."},
+      {name:"Deepak Saini",imgurl:images.deepak_saini,designation:"Full Stack Developer",feedback:"Masterful Full Stack Developer, seamlessly integrating frontend and backend magic."},
       {name:"Jainam Doshi",imgurl:images.jainam_doshi,designation:"Freelancer | Photographer",feedback:"Reliable freelancer delivering quality work on time, every time."},
       {name:"Rushil Kakadiya",imgurl:images.rushil_kakadiya,designation:"Android App Developer",feedback:"Top-tier Android app development skills, consistently exceeding expectations."},
       {name:"Uttam Bhalara",imgurl:images.uttam_bhalara,designation:"Web Developer",feedback:"Web development wizard, turning visions into stunning online realities."},

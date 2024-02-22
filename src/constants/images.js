@@ -41,6 +41,7 @@ import spotify from "../assets/spotify.png";
 import uttam_bhalara from "../assets/uttam_bhalara.jpg";
 import rushil_kakadiya from "../assets/rushil_kakadiya.jpg";
 import jainam_doshi from "../assets/jainam_doshi.jpg";
+import deepak_saini from "../assets/deepak_saini.jpg";
 
 export default {
   php,
@@ -82,4 +83,5 @@ export default {
   uttam_bhalara,
   rushil_kakadiya,
   jainam_doshi,
+  deepak_saini,
 };

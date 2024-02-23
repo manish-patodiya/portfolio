@@ -26,6 +26,21 @@ import about02 from "../assets/about02.png";
 import about03 from "../assets/about03.png";
 import about04 from "../assets/about04.png";
 
+import project01 from "../assets/project01.jpg";
+import project02 from "../assets/project02.jpg";
+import project03 from "../assets/project03.jpg";
+import project04 from "../assets/project04.jpg";
+import project05 from "../assets/project05.jpg";
+import project06 from "../assets/project06.jpg";
+import project07 from "../assets/project07.jpg";
+import project08 from "../assets/project08.jpg";
+import project09 from "../assets/project09.jpg";
+import project10 from "../assets/project10.jpg";
+import project11 from "../assets/project11.jpg";
+import project12 from "../assets/project12.jpg";
+import project13 from "../assets/project13.jpg";
+import project14 from "../assets/project14.jpg";
+
 import profile from "../assets/profile.png";
 import circle from "../assets/circle.svg";
 import logo from "../assets/logo.png";
@@ -70,6 +85,20 @@ export default {
   about02,
   about03,
   about04,
+  project01,
+  project02,
+  project03,
+  project04,
+  project05,
+  project06,
+  project07,
+  project08,
+  project09,
+  project10,
+  project11,
+  project12,
+  project13,
+  project14,
   profile,
   circle,
   logo,

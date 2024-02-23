@@ -18,7 +18,7 @@ const Work = () => {
         description: "E-commerce platform for the Artisans in rajasthan.",
         projectLink: "",
         codeLink: "https://github.com/manish-patodiya/raah",
-        imgUrl: images.about02,
+        imgUrl: images.project01,
         tags: ["Web App", "All"],
       },
       {
@@ -26,7 +26,7 @@ const Work = () => {
         description: "Inventory management system for businesses.",
         projectLink: "",
         codeLink: "https://github.com/manish-patodiya/Invento",
-        imgUrl: images.about02,
+        imgUrl: images.project11,
         tags: ["Web App"],
       },
       {
@@ -35,7 +35,7 @@ const Work = () => {
           "Healthcare service for patients where they can make appointment and consult with the doctors.",
         projectLink: "https://evaidyak.com/clinic",
         codeLink: "",
-        imgUrl: images.about02,
+        imgUrl: images.project04,
         tags: ["Web App"],
       },
       {
@@ -44,7 +44,7 @@ const Work = () => {
           "Platform for the jangir society to connect with the society members and keep a track of members in a region",
         projectLink: "",
         codeLink: "https://github.com/manish-patodiya/JangirSamaj",
-        imgUrl: images.about02,
+        imgUrl: images.project06,
         tags: ["Web App"],
       },
       {
@@ -53,15 +53,15 @@ const Work = () => {
           "Data mining project for shortlisting resume based on the job role",
         projectLink: "",
         codeLink: "https://github.com/manish-patodiya/CVtae",
-        imgUrl: images.about02,
+        imgUrl: images.project07,
         tags: ["Web App"],
       },
       {
         title: "Modern UI/UX Website",
         description: "A Modern UI/UX Portfolio Website.",
-        projectLink: "",
+        projectLink: "https://manish-patodiya.github.io/portfolio/",
         codeLink: "https://github.com/manish-patodiya/portfolio",
-        imgUrl: images.about02,
+        imgUrl: images.project08,
         tags: ["UI/UX", "React JS"],
       },
       {
@@ -70,7 +70,7 @@ const Work = () => {
           "Calculator clone made using Java AWT and Swing Components",
         projectLink: "",
         codeLink: "",
-        imgUrl: images.about02,
+        imgUrl: images.project09,
         tags: ["UI/UX"],
       },
       {
@@ -78,7 +78,7 @@ const Work = () => {
         description: "Frontend UI in react",
         projectLink: "https://manish-patodiya.github.io/storyclub/",
         codeLink: "https://github.com/manish-patodiya/storyclub",
-        imgUrl: images.about02,
+        imgUrl: images.project10,
         tags: ["UI/UX", "React JS"],
       },
     ];

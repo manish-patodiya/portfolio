@@ -25,7 +25,7 @@ const Footer = () => {
       email: formData.email,
       message: formData.message,
     };
-  
+
     console.log(contact)
     setTimeout(() => {
       setLoading(false);
@@ -64,7 +64,10 @@ const Footer = () => {
               onChange={handleChangeInput}
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
+          <a className="p-text" href={`https://wa.me/9602065385/?text=Name: ${username || ""}%0aEmail: ${email || ""}%0a${message || ""}`}>
+            <img src={images.whatsapp} alt="" />
+            {!loading ? "Send Message" : "Sending..."}
+          </a>
         </div>
       ) : (
         <div>

@@ -103,8 +103,8 @@
     }
   }
 
-  button {
-    padding: 1rem 2rem;
+  button,a {
+    padding: 1rem 1.5rem;
     border-radius: 10px;
     border: none;
     background-color: var(--secondary-color);
@@ -114,12 +114,21 @@
     outline: none;
     margin: 2rem 0 0 0;
     font-family: var(--font-base);
+    text-decoration: none;
 
     transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
     cursor: pointer;
 
+
+    display: flex;
+    align-items: center;
     &:hover {
       background-color: #2430af;
+    }
+
+    img{
+      width: 20px;
+      margin-right: 4px;
     }
   }
 

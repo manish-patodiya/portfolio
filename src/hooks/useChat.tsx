@@ -12,7 +12,7 @@ export type ChatMessage = {
 const WELCOME: ChatMessage = {
   role: "assistant",
   content:
-    "Hi — I'm Manish's career assistant. Ask about his journey, AI skills, Snow-Vision, projects, or experience. I answer from his public profile only.",
+    "Hi — you're chatting with Manish's portfolio AI. I'll answer as Manish, using my public profile only. Ask about my journey, AI skills, Snow-Vision, projects, or experience.",
 };
 
 type ChatApiResponse = {

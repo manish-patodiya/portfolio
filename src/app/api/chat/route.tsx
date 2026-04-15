@@ -87,7 +87,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const modelName = process.env.GOOGLE_CHAT_MODEL || "gemini-3-flash-preview";
+    const modelName = process.env.GOOGLE_CHAT_MODEL || "gemini-2.5-flash";
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({

@@ -8,10 +8,10 @@ import { useChat } from "@/hooks/useChat";
 import { ChatMarkdown } from "@/components/ChatMarkdown";
 
 const SUGGESTED = [
-  "Tell me about Manish",
+  "Introduce yourself",
   "What is Snow-Vision?",
-  "What are his AI skills?",
-  "Show his projects",
+  "What are your AI skills?",
+  "What projects have you worked on?",
 ];
 
 function TypingDots() {
@@ -78,7 +78,7 @@ export function AIChatbot() {
             className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-[0_0_48px_rgba(139,92,246,0.5)] ring-2 ring-cyan-400/30 [bottom:20px] [right:20px]"
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
-            aria-label="Open career AI assistant"
+            aria-label="Open chat with Manish"
           >
             <MessageCircle className="h-6 w-6" />
           </motion.button>
@@ -107,7 +107,7 @@ export function AIChatbot() {
               className="fixed z-[101] flex max-h-[min(85dvh,640px)] w-[min(100vw-2.5rem,420px)] flex-col overflow-hidden rounded-2xl border border-cyan-500/25 bg-[#0a0a0a]/92 shadow-[0_0_0_1px_rgba(139,92,246,0.15),0_24px_80px_rgba(0,0,0,0.65),0_0_60px_rgba(34,211,238,0.12)] backdrop-blur-xl [bottom:20px] [right:20px]"
               role="dialog"
               aria-modal="true"
-              aria-label="Career AI assistant for Manish Patodiya"
+              aria-label="Chat with Manish Patodiya"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(34,211,238,0.12),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(139,92,246,0.14),transparent_45%)]" />
@@ -119,10 +119,10 @@ export function AIChatbot() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-slate-50">
-                      Manish — Career AI
+                      Manish — Portfolio AI
                     </p>
                     <p className="text-xs text-slate-500">
-                      Powered by your profile + Google Gemini
+                      Chat as if with Manish · public profile + Gemini
                     </p>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export function AIChatbot() {
                   >
                     <div className="flex items-center gap-3 rounded-2xl border border-cyan-500/20 bg-white/[0.05] px-4 py-3 text-sm text-slate-300 shadow-inner shadow-cyan-500/5">
                       <TypingDots />
-                      <span className="text-slate-500">AI is thinking...</span>
+                      <span className="text-slate-500">Thinking…</span>
                     </div>
                   </motion.div>
                 )}
@@ -217,7 +217,7 @@ export function AIChatbot() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={onKeyDown}
-                    placeholder="Ask about Manish's career..."
+                    placeholder="Ask about my work or background…"
                     disabled={loading}
                     className="min-h-[44px] flex-1 resize-none rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-slate-100 outline-none ring-cyan-500/0 transition-[border,box-shadow] placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-500/25 disabled:opacity-50"
                   />

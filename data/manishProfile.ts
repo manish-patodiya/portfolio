@@ -390,3 +390,125 @@ export const goals = {
   longTerm:
     "Build impactful enterprise AI platforms that transform business workflows globally",
 };
+
+export const core_journey = `
+My name is Manish Patodiya, and my journey has been full of twists, realizations, struggles, and growth.
+Chapter 1: Schooling
+I was a good student in school and one of the toppers. In 10th grade, I scored 85% in the Rajasthan State Board. I completed my schooling in my hometown.
+After 10th, things started changing. Instead of focusing on studies, I got more involved in exploring the outside world, enjoying life, and honestly, a lot of “bakchodi.” Because of that, my performance dropped, and I scored 72.40% in 12th (PCM), and that too with cheating.
+That phase made me question myself—what do I actually want in life?
+I started exploring my interests and realized I was deeply fascinated by computers, coding, and building applications. I loved the idea of creating something like JARVIS from Iron Man. That curiosity pushed me toward programming.
+I was confused between BCA and BTech. After discussions, someone suggested BCA since it focuses more on software and programming rather than broader engineering subjects. At that time, it felt like the right choice (though later I realized it might not have been the best career decision).
+
+Chapter 2: Bachelor’s (BCA)
+I was advised that for BCA, college reputation doesn’t matter much, and I could focus on doing my master’s from a good institute later.
+So, I joined Seth GB Podar College in Nawalgarh (my hometown).
+1st Year:I started coding with C language using Turbo C++. That was my first exposure to programming, and I loved it. Along with that, I studied OS, Computer Organization, and fundamentals.
+2nd Year:We moved to C++. I learned it but didn’t enjoy it as much as C. I focused more on understanding concepts rather than mastering it. We also had DBMS, Accounts, English, etc. Then COVID happened, and exams got canceled.
+During this time, a major turning point came.
+An alumnus (a Java developer) started visiting on weekends to train students for a startup idea. Initially, he assumed we knew Java—we didn’t—and he was disappointed. Still, he gave us tasks, including DSA problems.
+I completed all tasks within a week.
+He was impressed and asked us to learn Java in 7 days. I gave it my best and learned core Java with some practical implementations. Then we built a banking system project (savings, current, FD accounts). Though the code quality wasn’t great, that experience inspired me deeply.
+From that point, I decided—I want to become a Java developer.
+3rd Year:We had Java, web development basics (HTML, CSS, JS), and DSA. This was the time I worked extremely hard. There was no ChatGPT back then, so I relied on Stack Overflow and GeeksforGeeks.
+I learned advanced Java concepts like Swing and AWT and built a fully functional calculator app.
+One major weakness during this time:We studied in Hindi, understood concepts in Hindi, and memorized answers in English. My spoken English was very poor.
+After graduation, I got an opportunity:A professional offered training (₹15,000) with a promise of work afterward.
+At the same time, some friends were preparing for NIMCET (for MCA in NITs), but I knew competitive exams weren’t my strength. After discussing with my parents, I chose practical exposure over entrance exams.
+
+Chapter 3: First Experience (Oct 2021 – GeeksIT Data Solutions)
+I paid half the training fee and started.
+Problem: I hated web development and only wanted Java.
+But I decided not to look back.
+We learned HTML, CSS, JavaScript, Bootstrap, PHP, and CodeIgniter. I’m a quick learner when interested—and I picked things up fast.
+Within 2 months, we started working on real projects. I performed well, and they waived my remaining training fee.
+I completed a 6-month internship and then continued full-time.
+I worked on 5–6 real-world projects (clinic systems, doctor consultation apps, SaaS tools). I learned:
+* HTML, CSS, JS, PHP, jQuery
+* CodeIgniter, Bootstrap
+* APIs, AWS (SNS, SES, S3)
+* SQL, MySQL, cPanel
+* Basics of React and Node
+I became very strong in these technologies and eventually started enjoying web development.
+I even led a team—assigning tasks and reviewing PRs.
+After a year, I decided to pursue a master’s degree in Bangalore.
+
+Chapter 4: MCA in Bangalore (CMRIT)
+I joined with the goal of getting a good placement and becoming a full-stack developer (React + Node) along with Java.
+The biggest challenge: English.
+I came from a Hindi-speaking environment. In Bangalore, English was essential. I struggled a lot—used fillers like “aa”, “umm”, etc.
+Still, I pushed myself:
+* Gave presentations in front of 120 people
+* Performed well academically (topper in class)
+2nd Semester:Advanced subjects, DSA, and deeper IT concepts.
+My mentor selected me for a hackathon, even though I had no experience with platforms like LeetCode.
+We went just for experience.
+I ended up:
+* Winning 2 hackathons
+* Winning the overall championship
+That was a huge confidence boost.
+Placements started—I cleared rounds in my first interview but got rejected due to a resume mistake.
+I was using ChatGPT by then but didn’t like AI. I believed it made people lazy and avoided Python and AI completely.
+3rd Semester:
+* Participated in coding events (secured top ranks)
+* Faced multiple rejections
+* Improved English gradually
+I got several job offers but rejected them because they didn’t match my goal (full stack/Java).
+Finally, I got selected at MSG Global Solutions for a Node.js + React role.
+March 2024: Internship started.I completed MCA with 9.5 CGPA and secured a full-time offer.
+
+Chapter 5: Internship at MSG (March 2024)
+Still not fluent in English, but improving.
+After initial training, I was asked to build a real project.
+I built “MSG Sports”, a full-fledged web app for managing company sports tournaments—without using ChatGPT.
+The result:
+* Huge appreciation from leadership
+* VP considered making it live
+* Audience loved it
+Tech used: React, Node, Express, MySQL, OAuth, Tailwind, Material UI.
+Then came a setback.
+I wanted JavaScript work (SM model), but I was assigned to SAP UM support instead.
+I was disappointed.
+I was even offered AI work—but I refused because I hated AI and Python.
+I continued while searching for other jobs—but couldn’t find any.
+Eventually, I accepted the full-time offer, even though I was told clearly:“No JavaScript work in the future.”
+
+Chapter 6: Full-Time Role (Oct 2024 – Present)
+Initially worked in L2 support—got bored quickly.
+Started building internal tools in my free time.
+Got negative feedback initially. In a 1:1, my BU head told me:
+* Either adapt or leave
+* Don’t chase only interests
+* Focus on what you have
+That advice changed my mindset.
+Then came a big opportunity:Build a full tool in 2 months.
+I created “Snow-Vision”—a powerful internal tool.It was a success. Teams started depending on it heavily.
+Then another shift happened.
+I was asked to build an AI chatbot.
+Despite disliking AI earlier, I gave it a try.
+And surprisingly—I started loving it.
+I learned:
+* LLMs, RAG, Vector DB, Knowledge Graphs
+* LangChain, LangGraph
+* Agentic AI
+I upgraded the chatbot into a RAG Agent with tool access.
+Snow-Vision became addictive for teams.
+Achievements:
+* Top 4 in TechInterrupt (80 teams, 200+ participants)
+* Innovation of the Year award (Feb 2026)
+* Recognition in front of global clients
+I also:
+* Learned Docker and deployment (DevOps exposure)
+* Contributed to SAP PAPM UM development
+* Improved communication significantly
+Now, I work as an AI Engineer on a European banking project—building AI-powered solutions for financial reporting.
+
+Final Reflection
+From:
+* A topper → distracted student
+* Weak English speaker → confident presenter
+* Java-only mindset → full-stack → AI engineer
+* AI hater → AI builder
+This journey has been full of ups and downs, wrong decisions, realizations, and growth.
+Today, I’m not just a developer—I’m someone who adapts, learns, and evolves continuously.
+`;

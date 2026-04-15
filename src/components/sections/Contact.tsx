@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Send } from "lucide-react";
 import { social } from "@/data/portfolio";
@@ -10,11 +11,51 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    window.setTimeout(() => setSent(false), 3200);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") ?? "").trim();
+    const email = String(fd.get("email") ?? "").trim();
+    const message = String(fd.get("message") ?? "").trim();
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setError(
+        "Contact form is not configured. Set NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY."
+      );
+      return;
+    }
+
+    setError(null);
+    setSubmitting(true);
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          title: "Contacted through portfolio",
+          name,
+          time: Date.now(),
+          message,
+          email,
+        },
+        publicKey
+      );
+      setSent(true);
+      form.reset();
+      window.setTimeout(() => setSent(false), 3200);
+    } catch {
+      setError("Could not send your message. Please try again or reach out on LinkedIn.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -38,7 +79,7 @@ export function Contact() {
             className="lg:col-span-2"
           >
             <p className="text-slate-400 leading-relaxed">
-              This form is frontend-only for the demo—wire it to your API or form service when you deploy.
+              Messages are sent securely via EmailJS. I typically reply within a few days.
             </p>
             <div className="mt-8 flex gap-4">
               <a
@@ -101,24 +142,32 @@ export function Contact() {
                 placeholder="Tell me about your project or idea…"
               />
             </label>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_32px_rgba(139,92,246,0.35)]"
-              >
-                <Send className="h-4 w-4" />
-                Send message
-              </motion.button>
-              {sent && (
-                <motion.span
-                  initial={{ opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="text-sm text-cyan-300"
+            <div className="mt-6 flex flex-col gap-3">
+              <div className="flex flex-wrap items-center gap-4">
+                <motion.button
+                  type="submit"
+                  disabled={submitting}
+                  whileHover={submitting ? undefined : { scale: 1.02 }}
+                  whileTap={submitting ? undefined : { scale: 0.98 }}
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_32px_rgba(139,92,246,0.35)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Thanks—message captured (demo).
-                </motion.span>
+                  <Send className="h-4 w-4" />
+                  {submitting ? "Sending…" : "Send message"}
+                </motion.button>
+                {sent && (
+                  <motion.span
+                    initial={{ opacity: 0, x: 8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="text-sm text-cyan-300"
+                  >
+                    Thanks—your message was sent.
+                  </motion.span>
+                )}
+              </div>
+              {error && (
+                <p className="text-sm text-red-400" role="alert">
+                  {error}
+                </p>
               )}
             </div>
           </motion.form>

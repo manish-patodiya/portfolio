@@ -10,7 +10,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Achievements } from "@/components/sections/Achievements";
 import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
-import { AIChatbot } from "@/components/chat/AIChatbot";
+import { AIChatbot } from "@/components/AIChatbot";
 
 export default function Home() {
   return (

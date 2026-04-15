@@ -5,8 +5,8 @@ export const owner = {
 };
 
 export const social = {
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
+  github: "https://github.com/manish-patodiya/",
+  linkedin: "https://linkedin.com/in/manish-patodiya",
 };
 
 export const journey = [
@@ -44,7 +44,7 @@ export const journey = [
     title: "AI Transformation",
     period: "MSG Global Solutions (Full-Time)",
     description:
-      "Evolved from L2 support engineer to AI Engineer by building Snow-Vision, an enterprise AI platform integrating LLMs, RAG pipelines, vector search, and knowledge graphs for intelligent workflow automation.",
+      "Evolved from L2 support engineer to AI Engineer by building Snow-Vision, an enterprise AI platform integrating LLMs, RAG pipelines, RAG Agent, vector search, and knowledge graphs for intelligent workflow automation.",
   },
 ];
 

@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { NeuralBackground } from "@/components/effects/NeuralBackground";
 import { CursorGlow } from "@/components/effects/CursorGlow";
 import { ScrollProgress } from "@/components/effects/ScrollProgress";
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export function SiteChrome({ children }: { children: ReactNode }) {
@@ -16,7 +15,6 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         aria-hidden
       />
       <div className="relative z-10">
-        <Header />
         <main>{children}</main>
         <Footer />
       </div>

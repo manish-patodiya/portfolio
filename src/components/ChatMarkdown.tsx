@@ -4,6 +4,7 @@ import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
+import { normalizeChatMarkdownLinks } from "@/lib/normalizeChatMarkdownLinks";
 
 type ChatMarkdownProps = {
   children?: React.ReactNode;
@@ -91,14 +92,20 @@ function buildMarkdownComponents(variant: "chat" | "article"): Components {
       );
     },
     pre: (props) => <pre className={pre} {...omitNode(props)} />,
-    a: (props) => (
-      <a
-        className="font-medium text-cyan-400 underline decoration-cyan-500/40 underline-offset-2 transition-colors hover:text-cyan-300"
-        target="_blank"
-        rel="noopener noreferrer"
-        {...omitNode(props)}
-      />
-    ),
+    a: (props) => {
+      const rest = omitNode(props);
+      const href = typeof rest.href === "string" ? rest.href : "";
+      const internal = href.startsWith("/") && !href.startsWith("//");
+      return (
+        <a
+          className="font-medium text-cyan-400 underline decoration-cyan-500/40 underline-offset-2 transition-colors hover:text-cyan-300"
+          {...rest}
+          {...(internal
+            ? {}
+            : { target: "_blank", rel: "noopener noreferrer" })}
+        />
+      );
+    },
     hr: () => <hr className={isArticle ? "my-10 border-white/10" : "my-3 border-white/10"} />,
     table: (props) => (
       <div className={`${tableWrap} overflow-x-auto rounded-lg border border-white/10`}>
@@ -131,7 +138,8 @@ const articleComponents = buildMarkdownComponents("article");
  * Renders assistant chat or case study content as sanitized Markdown (GFM).
  */
 export function ChatMarkdown({ children, variant = "chat" }: ChatMarkdownProps) {
-  const text = typeof children === "string" ? children : "";
+  const raw = typeof children === "string" ? children : "";
+  const text = normalizeChatMarkdownLinks(raw);
   const components = variant === "article" ? articleComponents : chatComponents;
   const wrapper =
     variant === "article"

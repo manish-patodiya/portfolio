@@ -29,7 +29,7 @@ Internal Project
 
 ### Problem
 
-As part of the L2 support team for SAP PAPM (UM), we handled customer tickets via ServiceNow with a fragmented and manual workflow:
+As part of the L2 support team for SAP PAPM, we handled customer tickets via ServiceNow with a fragmented and manual workflow:
 
 - ServiceNow → Ticket analysis
 - JIRA → Bug tracking (separate system)

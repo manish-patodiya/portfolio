@@ -131,53 +131,179 @@ export const projects = [
   {
     title: "Snow-Vision",
     description:
-      "Snow-Vision is an end-to-end enterprise platform designed to unify ServiceNow and JIRA workflows, automate RCA processes, and enhance L2 support efficiency using AI. It integrates ticket data into a centralized system, provides SLA tracking, analytics, and introduces a RAG-based AI agent for intelligent query resolution. Additionally, it includes shift management, handover notifications, and workload tracking to streamline night support operations and improve team productivity.",
+      "End-to-end enterprise platform for SAP PAPM: centralizes ServiceNow and JIRA into SAP HANA, automates RCA, and surfaces SLA monitoring with Microsoft Teams alerts. It delivers rich analytics with interactive charts (ticket age, time distribution, trends, operational metrics) for product owners and stakeholders, and a RAG-based assistant—grounded in RCA history, tickets, JIRA, and PAPM documentation—that helps developers, support, product, and leadership ask questions about the app, incidents, and processes. Includes one-click JIRA creation, shift management, handovers, and workload visibility for operations and payroll-related insight.",
     stack: [
       "Python",
       "LangChain",
       "LangGraph",
       "Node.js",
       "Next.js",
+      "TypeScript",
+      "Playwright",
       "SAP BTP",
       "SAP AI Core",
       "SAP HANA",
-      "Playwright",
-      "Vector Database",
+      "ShadCN",
+      "Material Tailwind",
+      "Vector databases",
       "BM25",
-      "Knowledge Graphs",
-      "Microsoft Teams Integration",
+      "Knowledge graphs",
+      "Microsoft Teams",
     ],
     impact: [
-      "Used by 150+ stakeholders across teams",
-      "Reduced RCA manual effort by ~80%",
-      "Prevented SLA breaches through proactive alerting system",
-      "Unified ServiceNow and JIRA tracking into a single platform",
-      "Automated JIRA ticket creation workflow",
-      "Enabled AI-driven ticket resolution using historical and contextual data",
-      "Streamlined night support operations with shift scheduling and handover notifications",
-      "Provided workload and payroll insights through tracking and analytics",
-      "Recognized with 'Innovation of the Year' award",
+      "Used by 150+ people across roles: developers, support, product owners, and other stakeholders",
+      "Reduced manual RCA effort by ~80% with pre-filled RCA workflows",
+      "Proactive SLA tracking and Teams alerts (e.g. 4h / 2h / 1h / 30m before breach, plus post-breach)",
+      "Unified ServiceNow and JIRA lifecycle in one dashboard backed by SAP HANA",
+      "Interactive charts and analytics for data-driven decisions beyond raw exports",
+      "RAG assistant for SAP PAPM–related queries using hybrid retrieval (vector + BM25), knowledge graph context, and LangGraph multi-step reasoning",
+      "AI-driven resolution suggestions grounded in historical tickets and documentation",
+      "Automated structured JIRA creation and centralized logging",
+      "Shift scheduling, handover notifications, and workload tracking for day/night operations and payroll visibility",
+      "Recognized with Innovation of the Year",
     ],
+    kind: "enterprise" as const,
+    links: {
+      caseStudy: "snow-vision",
+      caseStudyUrl: "/portfolio/snow-vision",
+      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/",
+    },
+    caseStudyContent: `## Problem
+
+Anyone working on **SAP PAPM **—developers digging into issues, support handling customer tickets, product owners tracking delivery, or stakeholders reviewing health of the estate—was stuck with a fragmented toolchain: ServiceNow here, JIRA there, RCA in spreadsheets, and no shared picture. That meant context switching, SLA risk without proactive signals, heavy manual RCA (~80% repetitive work), limited insight into time and delays, and weak visibility into who was on call and how workload landed across day and night.
+
+## Solution
+
+I designed and built **Snow-Vision** end-to-end: one platform where **every role** can work from the same source of truth—tickets, RCA, analytics, AI assistance, and operational tooling (shifts, notifications, workload)—without jumping between disconnected systems.
+
+## Core platform
+
+- **Unified tickets** — ServiceNow and JIRA integrated into SAP HANA with a single dashboard for the full lifecycle.
+- **RCA automation** — Pre-fills most RCA fields to remove manual copy-paste.
+- **SLA monitoring** — Real-time tracking and Microsoft Teams alerts at 4h / 2h / 1h / 30m before breach, plus post-breach alerts.
+- **Analytics & charts** — Multiple interactive visualizations to explore ticket age, time distribution, trends, and operational metrics—so product owners and stakeholders can reason about the data, not only tabular exports.
+
+## AI layer
+
+A **RAG-based assistant** trained on SAP PAPM–relevant context: RCA history, ServiceNow and JIRA records, and PAPM documentation. It helps **anyone**—engineering, support, product, or leadership—ask questions about the application, past incidents, behavior, and processes, and get grounded answers. Resolution suggestions draw on real history; retrieval uses **hybrid search (vector + BM25)**, a **knowledge graph** to reduce hallucination, and **LangGraph** for multi-step reasoning.
+
+## Automation and operations
+
+One-click structured JIRA creation, centralized logs, and a **shift management** layer: daily ownership, handover notifications, and hours-worked views for continuity, fair load, and payroll-related visibility.`,
+    architecture: `### Data layer
+
+- ServiceNow data ingested on a schedule (e.g. ~30 minutes) via APIs; JIRA via token-based APIs; persisted in **SAP HANA**.
+
+### Authentication
+
+- Where direct API auth was limited, **Playwright** was used to obtain a session token (e.g. x-user-token) for authenticated downstream requests.
+
+### AI layer
+
+- RAG: semantic chunking, embeddings + vector search, **BM25** keyword retrieval, knowledge graph for structured context, **LangGraph** for agent workflows.
+
+### Application layer
+
+- **Node.js** and **Python** services; **Next.js** dashboard with chart-driven analytics; notifications via **Microsoft Teams**.`,
+    challenges: `- No direct API authentication for every integration — required a robust session-token workaround.
+- Tuning **hybrid retrieval** (vector + BM25 + knowledge graph) for accuracy and latency.
+- Keeping ServiceNow and JIRA data **consistent** in one model.
+- Correct, timely **SLA rules** and real-time alerts.
+- Reducing **hallucinations** in production AI responses.
+- **Shift logic** that matched how teams actually work at night.`,
+    learnings: `- End-to-end ownership of enterprise systems: product sense, not only features.
+- Designing **AI + workflow** platforms that survive real operations.
+- Production **RAG**: evaluation, logging, and iteration matter as much as model choice.
+- Multi-source **enterprise integrations** (ServiceNow, JIRA, HANA, Teams) under real constraints.
+- Balancing **performance** with near–real-time sync and alerting.`,
   },
   {
     title: "MSG Sports",
     description:
-      "Enterprise sports management platform designed to automate tournament operations and reduce manual coordination overhead.",
-    stack: ["React", "Node.js", "Express", "MySQL", "Tailwind", "Material UI"],
-    impact:
-      "Reduced manual effort by ~80% and improved event coordination efficiency across teams.",
+      "Full-stack internal platform for company sports tournaments: structured workflows for admins, captains, and players—registrations, teams, brackets, and schedules in one system instead of spreadsheets and ad-hoc messaging. REST APIs behind a React client; MySQL as the source of truth with role-based access at the API layer.",
+    stack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MySQL",
+      "Tailwind CSS",
+      "Material UI",
+    ],
+    impact: [
+      "Used by 200+ employees",
+      "Reduced manual tournament coordination work by ~80%",
+      "Improved transparency and coordination across teams",
+      "Role-based access (admin, captain, player) with progressive, adoption-friendly UX",
+    ],
+    kind: "enterprise" as const,
     links: {
       github: "https://github.com/manish-patodiya/msg-sports",
-      caseStudy: "/portfolio/msg-sports",
+      caseStudy: "msg-sports",
+      caseStudyUrl: "/portfolio/msg-sports",
     },
+    caseStudyContent: `## Overview
+
+**MSG Sports** digitizes how we run internal sports events: registrations, teams, brackets, and schedules live in one system instead of scattered sheets and chats.
+
+## What it does
+
+- Clear roles: **admin**, **captain**, and **player** with permissions that match real tournament operations.
+- **REST APIs** behind a **React** client for dynamic, responsive screens.
+- **MySQL** as the source of truth for events, rosters, and schedules.`,
+    architecture: `- **Role-based access** (Admin, Captain, Player) enforced in the API.
+- **REST** backend on **Node.js / Express**.
+- **Relational schema** in **MySQL** for events and registrations.
+- **React** SPA with **Tailwind** and **Material UI** for a consistent, responsive UI.`,
+    challenges: `- Modeling **flexible team structures** and schedule edge cases without overwhelming users.
+- **Dynamic data** (scores, brackets, roster changes) staying fast and understandable.
+- Keeping the experience **smooth** for both power users and occasional players.`,
+    learnings: `- Building **scalable full-stack** systems with clear domain boundaries.
+- Designing **role-based workflows** that match how organizations actually run events.
+- **Progressive disclosure** in the UI—surface complexity only when the task needs it—helped adoption in a team environment.`,
   },
   {
     title: "Evaidyak",
     description:
-      "Healthcare SaaS platform with multi-clinic architecture, AWS integrations, and payment systems.",
-    stack: ["PHP", "MySQL", "AWS"],
-    impact:
-      "Production-grade system used by multiple clinics with real users and payment handling.",
+      "Multi-clinic healthcare SaaS for patient records, clinic operations, and communication. Multi-tenant architecture with isolated database schemas per clinic; MVC stack on CodeIgniter/PHP; AWS (S3 storage, SNS notifications, SES email); Razorpay for payments. Production system with real users, live traffic, and client-facing delivery experience.",
+    stack: [
+      "PHP",
+      "CodeIgniter",
+      "MySQL",
+      "AWS S3",
+      "AWS SNS",
+      "AWS SES",
+      "Razorpay",
+    ],
+    impact: [
+      "Live production platform used by multiple clinics",
+      "Real users and end-to-end payment flows",
+      "Early ownership of production debugging, client communication, and multi-tenant data isolation for healthcare-adjacent data",
+    ],
+    kind: "enterprise" as const,
+    links: {
+      caseStudy: "evaidyak",
+      caseStudyUrl: "/portfolio/evaidyak",
+      demo: "https://www.cliniqtec.in/",
+    },
+    caseStudyContent: `## Overview
+
+**Evaidyak** was one of my first **production-grade** products: working directly with clients, live traffic, and real money moving through the system.
+
+## Product
+
+The platform lets clinics manage patient data and day-to-day operations efficiently. Each clinic can operate with **isolated data** so the product stays scalable and safe as more organizations onboard.`,
+    architecture: `- **Multi-tenant** model: separate database **schemas per clinic** for isolation.
+- **MVC** with **CodeIgniter** on **PHP**.
+- **AWS**: **S3** for storage, **SNS** for notifications, **SES** for email.
+- **Razorpay** for payments, wired through secure server-side flows.`,
+    challenges: `- Operating **many databases** (per tenant) without sacrificing operability.
+- **Data isolation and security** suitable for healthcare expectations.
+- **Production incidents** under pressure with real users.
+- **Payment reliability** end to end (webhooks, failures, reconciliation).`,
+    learnings: `- Shipping and **debugging live** systems—not just local demos.
+- Working **with clients** directly on requirements and expectations.
+- Designing **multi-tenant** architectures that stay maintainable.
+- Balancing speed with **correctness** when money and health-adjacent data are involved.`,
   },
 ];
 

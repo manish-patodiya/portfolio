@@ -144,7 +144,7 @@ export const projects: Project[] = [
     },
     caseStudyContent: `## Problem
 
-Anyone working on **SAP PAPM (UM)**—developers digging into issues, support handling customer tickets, product owners tracking delivery, or stakeholders reviewing health of the estate—was stuck with a fragmented toolchain: ServiceNow here, JIRA there, RCA in spreadsheets, and no shared picture. That meant context switching, SLA risk without proactive signals, heavy manual RCA (~80% repetitive work), limited insight into time and delays, and weak visibility into who was on call and how workload landed across day and night.
+Anyone working on **SAP PAPM**—developers digging into issues, support handling customer tickets, product owners tracking delivery, or stakeholders reviewing health of the estate—was stuck with a fragmented toolchain: ServiceNow here, JIRA there, RCA in spreadsheets, and no shared picture. That meant context switching, SLA risk without proactive signals, heavy manual RCA (~80% repetitive work), limited insight into time and delays, and weak visibility into who was on call and how workload landed across day and night.
 
 ## Solution
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
 import { owner } from "@/data/portfolio";
@@ -17,6 +17,18 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+
+  /** Hash links + immediate menu close unmount the anchor before WebKit applies in-page navigation. */
+  function handleMobileSectionClick(e: MouseEvent<HTMLAnchorElement>, href: string) {
+    e.preventDefault();
+    setOpen(false);
+    const id = href.slice(1);
+    window.setTimeout(() => {
+      const el = document.getElementById(id);
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", href);
+    }, 120);
+  }
 
   return (
     <header className="fixed left-0 right-0 top-0 z-[90] border-b border-white/5 bg-[var(--bg-deep)]/75 backdrop-blur-xl">
@@ -76,7 +88,7 @@ export function Header() {
                   key={l.href}
                   href={l.href}
                   className="rounded-lg px-3 py-2 text-slate-300 transition-colors duration-300 hover:bg-white/5 hover:text-cyan-300"
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => handleMobileSectionClick(e, l.href)}
                 >
                   {l.label}
                 </a>

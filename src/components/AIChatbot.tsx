@@ -62,19 +62,28 @@ export function AIChatbot() {
 
   return (
     <>
-      <motion.button
-        type="button"
-        onClick={() => {
-          setOpen(true);
-          clearError();
-        }}
-        className="fixed bottom-6 right-6 z-[95] flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-[0_0_48px_rgba(139,92,246,0.5)] ring-2 ring-cyan-400/30 md:bottom-8 md:right-8"
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.96 }}
-        aria-label="Open career AI assistant"
-      >
-        <MessageCircle className="h-6 w-6" />
-      </motion.button>
+      <AnimatePresence>
+        {!open && (
+          <motion.button
+            type="button"
+            key="chat-launcher"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            onClick={() => {
+              setOpen(true);
+              clearError();
+            }}
+            className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-[0_0_48px_rgba(139,92,246,0.5)] ring-2 ring-cyan-400/30 [bottom:20px] [right:20px]"
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.96 }}
+            aria-label="Open career AI assistant"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {open && (
@@ -84,17 +93,18 @@ export function AIChatbot() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[94] bg-[#0a0a0a]/70 backdrop-blur-[2px] md:bg-[#0a0a0a]/60"
+              transition={{ duration: 0.22 }}
+              className="fixed inset-0 z-[100] bg-[#0a0a0a]/70 backdrop-blur-[2px] md:bg-[#0a0a0a]/60"
               aria-label="Close chat overlay"
               onClick={() => setOpen(false)}
             />
 
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.96 }}
+              initial={{ opacity: 0, y: 24, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 16, scale: 0.96 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed bottom-20 right-4 z-[95] flex max-h-[min(85dvh,640px)] w-[min(100vw-1.5rem,420px)] flex-col overflow-hidden rounded-2xl border border-cyan-500/25 bg-[#0a0a0a]/92 shadow-[0_0_0_1px_rgba(139,92,246,0.15),0_24px_80px_rgba(0,0,0,0.65),0_0_60px_rgba(34,211,238,0.12)] backdrop-blur-xl md:bottom-24 md:right-8"
+              exit={{ opacity: 0, y: 18, scale: 0.96 }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed z-[101] flex max-h-[min(85dvh,640px)] w-[min(100vw-2.5rem,420px)] flex-col overflow-hidden rounded-2xl border border-cyan-500/25 bg-[#0a0a0a]/92 shadow-[0_0_0_1px_rgba(139,92,246,0.15),0_24px_80px_rgba(0,0,0,0.65),0_0_60px_rgba(34,211,238,0.12)] backdrop-blur-xl [bottom:20px] [right:20px]"
               role="dialog"
               aria-modal="true"
               aria-label="Career AI assistant for Manish Patodiya"

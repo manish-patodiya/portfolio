@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
+import { AIChatbot } from "@/components/AIChatbot";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,6 +41,8 @@ export default function RootLayout({
     >
       <body className="min-h-full overflow-x-hidden bg-[var(--bg-deep)] text-foreground">
         {children}
+        {/* Outside app/template.tsx so Framer Motion does not create a transform containing block for fixed positioning */}
+        <AIChatbot />
       </body>
     </html>
   );

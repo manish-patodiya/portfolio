@@ -9,6 +9,30 @@ export const social = {
   linkedin: "https://linkedin.com/in/manish-patodiya",
 };
 
+export type ProjectKind = "case-study" | "enterprise";
+
+export type ProjectLinks = {
+  github?: string;
+  demo?: string;
+  /** URL slug for `/portfolio/[slug]`; if omitted, title is slugified. */
+  caseStudy?: string;
+};
+
+export type Project = {
+  title: string;
+  description: string;
+  stack: string[];
+  impact: string;
+  links: ProjectLinks;
+  /** Shown as “Case Study” or “Enterprise Project” on the case page. */
+  kind: ProjectKind;
+  /** Markdown body for the case study detail page. */
+  caseStudyContent?: string;
+  architecture?: string;
+  challenges?: string;
+  learnings?: string;
+};
+
 export const journey = [
   {
     title: "The spark",
@@ -52,11 +76,15 @@ export const skillCategories = [
   {
     name: "AI Engineering",
     items: [
+      "Python",
+      "Typescript",
       "LLMs",
       "RAG",
       "LangChain",
       "LangGraph",
+      "GraphRAGs",
       "AI Agents",
+      "RAG Agents",
       "Vector Databases",
       "Knowledge Graphs",
       "BM25 Search",
@@ -67,6 +95,11 @@ export const skillCategories = [
     name: "Full Stack Development",
     items: ["React", "Next.js", "Node.js", "TypeScript", "Express"],
     accent: "from-violet-500/30 to-fuchsia-500/30",
+  },
+  {
+    name: "Programming Languages",
+    items: ["Python", "Java", "Javascript", "Data Structures", "OOPs"],
+    accent: "from-violet-500/30 to-cyan-500/30",
   },
   {
     name: "Enterprise & SAP",
@@ -83,31 +116,74 @@ export const skillCategories = [
     items: ["Docker", "AWS (S3, SES, SNS)", "SAP BTP Deployments"],
     accent: "from-blue-500/30 to-violet-500/30",
   },
-  {
-    name: "Programming Foundations",
-    items: ["C", "C++", "Java", "Data Structures", "OOPs"],
-    accent: "from-violet-500/30 to-cyan-500/30",
-  },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: "Snow-Vision",
     description:
-      "Enterprise AI platform evolved from a productivity tool into an intelligent assistant using LLMs, RAG pipelines, and knowledge graphs.",
+      "Enterprise AI platform evolved from a productivity tool into an intelligent assistant using LLMs, RAG pipelines, RAG Agents and knowledge graphs.",
     stack: [
+      "Python",
       "Next.js",
       "Node.js",
       "TypeScript",
-      "LangChain",
+      "ShadCN",
+      "Material Tailwind",
       "LangGraph",
-      "Vector DB",
+      "S/4 HANA DB",
       "SAP BTP",
-      "HANA",
     ],
     impact:
-      "Reduced manual workflows, enabled AI-powered decision support, and significantly improved internal operational efficiency.",
-    links: { github: "https://github.com", demo: "https://example.com" },
+      "Reduced manual workflows, enabled AI-powered decision support, and significantly improved internal operational efficiency. Overtime track on the service now and jira tickets",
+    kind: "enterprise",
+    links: {
+      caseStudy: "snow-vision",
+      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/",
+    },
+    caseStudyContent: `## Overview
+
+Snow-Vision started as an internal productivity surface and grew into a full **enterprise AI platform** on SAP BTP. The product combines conversational UX, retrieval-augmented generation, and workflow-aware agents so teams can move from search to action without leaving their operational context.
+
+## What I built
+
+- **LLM-backed assistant** with guardrails and enterprise authentication patterns.
+- **RAG pipelines** over operational and domain knowledge, tuned for accuracy and latency.
+- **LangGraph-style agent flows** for multi-step tasks (clarify → retrieve → act).
+- **Knowledge graph–friendly** data modeling to connect entities across services.
+
+## Outcomes
+
+Shipped features that reduced repetitive manual work, improved response quality for internal queries, and gave leadership a credible path to scale AI-assisted operations across teams.`,
+    architecture: `The platform follows a **BTP-hosted** topology: a Next.js-style front end (Material Tailwind / shadcn patterns) talks to Node services that orchestrate LLM calls, retrieval, and integrations. Vector and relational data live in **S/4 HANA–aligned** stores, with retrieval blending structured queries and semantic search. Agents are composed as graphs so steps remain inspectable and auditable—important in regulated enterprise settings.`,
+    challenges: `Balancing **latency vs. depth** in RAG (more context is not always better), hardening prompts and tools for production misuse, and aligning UX expectations (“chat”) with operational reality (permissions, data freshness, and traceability).`,
+    learnings: `**Evaluation loops** matter as much as model choice—golden sets, human review, and logging close the gap between demo and dependable assistant. Treating the assistant as a **workflow participant** (not just Q&A) unlocked the most durable wins.`,
+  },
+  {
+    title: "AI Assistant System",
+    description:
+      "LLM-powered assistant using retrieval-augmented generation to answer SAP PAPM enterprise queries with contextual grounding.",
+    stack: ["Python", "LangGraph", "RAG Agent", "HANA Vector DB"],
+    impact:
+      "Improved response accuracy and reduced repetitive internal support queries through intelligent automation.",
+    kind: "case-study",
+    links: {
+      caseStudy: "ai-assistant-system",
+      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/chatbot",
+    },
+    caseStudyContent: `## Problem
+
+Teams needed **grounded answers** over SAP PAPM enterprise data—generic LLM replies were not acceptable when correctness and citations matter.
+
+## Approach
+
+A **RAG Agent** pipeline retrieves from HANA vector stores, applies relevance filtering, and synthesizes responses with explicit references to retrieved context. LangGraph structures the flow so retrieval, tool use, and final answering stay modular and testable.
+
+## Results
+
+Higher answer quality and fewer repeated support tickets, with a path to extend tools as new data sources come online.`,
+    challenges: `Getting retrieval to return **precise chunks** for niche enterprise questions without blowing token budgets.`,
+    learnings: `Small, focused tool surfaces beat one giant prompt—**composability** wins in production agents.`,
   },
   {
     title: "MSG Sports",
@@ -116,16 +192,27 @@ export const projects = [
     stack: ["React", "Node.js", "Express", "MySQL", "Tailwind", "Material UI"],
     impact:
       "Reduced manual effort by ~80% and improved event coordination efficiency across teams.",
-    links: { github: "https://github.com", demo: "https://example.com" },
-  },
-  {
-    title: "AI Assistant System",
-    description:
-      "LLM-powered assistant using retrieval-augmented generation to answer enterprise queries with contextual grounding.",
-    stack: ["LangChain", "OpenAI", "RAG", "Vector DB", "Node.js"],
-    impact:
-      "Improved response accuracy and reduced repetitive internal support queries through intelligent automation.",
-    links: { github: "https://github.com", demo: "https://example.com" },
+    kind: "enterprise",
+    links: {
+      github: "https://github.com/manish-patodiya/msg-sports",
+      caseStudy: "msg-sports",
+    },
+    caseStudyContent: `## Summary
+
+MSG Sports is a **full-stack enterprise application** for managing tournaments, teams, and schedules—replacing spreadsheets and ad-hoc communication with a single system of record.
+
+## Highlights
+
+- **React + Material UI** for responsive, role-aware screens.
+- **Node.js / Express** APIs with clear domain boundaries.
+- **MySQL** for relational integrity across events and registrations.
+
+## Impact
+
+Operational teams spend less time on coordination and more time delivering successful events—measured by reduced manual steps and faster issue resolution.`,
+    architecture: `Classic **three-tier** layout: SPA client, REST API layer, and normalized relational schema. Auth and role checks live at the API to keep the client thin and predictable.`,
+    challenges: `Modeling **edge cases** in scheduling and brackets without making the UX feel heavy.`,
+    learnings: `**Progressive disclosure** in the UI—show complexity only when the user’s task requires it—kept adoption high.`,
   },
 ];
 
@@ -133,7 +220,8 @@ export const achievements = [
   {
     label: "Innovation of the Year",
     value: "2026",
-    detail: "Recognized for standout technical contribution",
+    detail:
+      "Recognized for standout technical contribution at MSG Global Solutions",
   },
   {
     label: "TechInterrupt Hackathon",
@@ -142,8 +230,8 @@ export const achievements = [
   },
   {
     label: "Hackathon wins",
-    value: "2×",
-    detail: "Back-to-back wins across competitive events",
+    value: "5X",
+    detail: "Back-to-back wins across competitive events.",
   },
 ];
 
@@ -153,19 +241,26 @@ export const experiences = [
     role: "AI Engineer / Full Stack Developer",
     period: "2024 – Present",
     highlights: [
-      "Built Snow-Vision, an enterprise AI platform integrating LLMs, RAG, and knowledge graphs.",
+      "Built Snow-Vision, an enterprise AI platform integrating LLMs, RAG, Ai Agents and knowledge graphs.",
       "Designed scalable AI pipelines using LangChain, LangGraph, and vector databases.",
       "Worked on SAP BTP, HANA, and enterprise-grade application architecture.",
-      "Delivered AI-powered automation systems for banking domain workflows.",
+      "Delivering AI-powered automation systems for banking domain workflows.",
     ],
     tech: [
       "LLMs",
+      "RAG",
+      "Ai Agents",
+      "Knowledge Graphs",
+      "LangGraph",
       "LangChain",
+      "Vector Databases",
       "SAP BTP",
-      "HANA",
+      "SAP S/4 HANA",
       "Next.js",
       "Node.js",
       "Docker",
+      "shadcn",
+      "material tailwind",
     ],
   },
   {
@@ -178,6 +273,18 @@ export const experiences = [
       "Handled deployment, integration, and backend architecture.",
       "Contributed to end-to-end feature development and maintenance.",
     ],
-    tech: ["HTML", "CSS", "JavaScript", "PHP", "AWS", "MySQL"],
+    tech: [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript",
+      "PHP",
+      "CodeIgniter",
+      "AWS",
+      "MySQL",
+      "SQL",
+      "React.js",
+      "Node.js",
+    ],
   },
 ];

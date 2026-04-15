@@ -108,33 +108,46 @@ export const projects = [
   {
     title: "Snow-Vision",
     description:
-      "Enterprise AI automation platform integrating LLMs, RAG agents, and SAP systems to centralize workflows, insights, and decision-making.",
+      "Enterprise AI platform evolved from a productivity tool into an intelligent assistant using LLMs, RAG pipelines, RAG Agents and knowledge graphs.",
     stack: [
+      "Python",
       "Next.js",
       "Node.js",
+      "TypeScript",
       "LangGraph",
-      "LLMs",
+      "S/4 HANA DB",
       "SAP BTP",
-      "HANA",
-      "Python",
     ],
     impact:
-      "Used by 150+ stakeholders, automating workflows, improving decision-making, and enabling AI-driven insights across enterprise systems.",
+      "Reduced manual workflows, enabled AI-powered decision support, and improved internal operational efficiency.",
+    links: {
+      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/",
+      caseStudy: "/portfolio/snow-vision",
+    },
   },
   {
-    title: "AI Assistant for BAIS",
+    title: "AI Assistant System",
     description:
-      "AI-driven assistant for automating regulatory reporting (AnaCredit) in European banking systems.",
-    stack: ["LLMs", "RAG", "LangChain", "SAP Systems"],
+      "LLM-powered assistant using retrieval-augmented generation to answer SAP PAPM enterprise queries with contextual grounding.",
+    stack: ["Python", "LangGraph", "RAG Agent", "HANA Vector DB"],
     impact:
-      "Automates complex regulatory workflows and improves reporting accuracy for banking systems.",
+      "Improved response accuracy and reduced repetitive internal support queries through intelligent automation.",
+    links: {
+      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/chatbot",
+      caseStudy: "/portfolio/ai-assistant-system",
+    },
   },
   {
     title: "MSG Sports",
     description:
-      "Full-stack platform for managing internal sports tournaments and operations.",
-    stack: ["React", "Node.js", "MySQL"],
-    impact: "Reduced manual effort by ~80% and adopted by 200+ employees.",
+      "Enterprise sports management platform designed to automate tournament operations and reduce manual coordination overhead.",
+    stack: ["React", "Node.js", "Express", "MySQL", "Tailwind", "Material UI"],
+    impact:
+      "Reduced manual effort by ~80% and improved event coordination efficiency across teams.",
+    links: {
+      github: "https://github.com/manish-patodiya/msg-sports",
+      caseStudy: "/portfolio/msg-sports",
+    },
   },
 ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import { owner, social } from "@/data/portfolio";
 import { TypingEffect } from "@/components/hero/TypingEffect";
 
@@ -68,16 +68,25 @@ export function Hero() {
         >
           <a
             href="#projects"
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_0_40px_rgba(139,92,246,0.35)] transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_0_40px_rgba(139,92,246,0.35)] transition-[transform,box-shadow] duration-300 hover:scale-[1.02] hover:shadow-[0_0_52px_rgba(34,211,238,0.35)] active:scale-[0.98]"
           >
             <span className="relative z-10">View Projects</span>
-            <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity group-hover:opacity-100" />
+            <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </a>
           <a
             href="#contact"
-            className="rounded-xl border border-white/15 bg-white/5 px-8 py-3.5 text-sm font-semibold text-slate-100 backdrop-blur-sm transition-colors hover:border-cyan-400/40 hover:bg-white/10 hover:text-cyan-200"
+            className="rounded-xl border border-white/15 bg-white/5 px-8 py-3.5 text-sm font-semibold text-slate-100 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/10 hover:text-cyan-200"
           >
             Contact Me
+          </a>
+          <a
+            href="/resume.pdf"
+            download
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl border border-cyan-500/35 bg-cyan-500/10 px-8 py-3.5 text-sm font-semibold text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.2)] transition-[transform,box-shadow] duration-300 hover:scale-[1.02] hover:border-cyan-400/50 hover:bg-cyan-500/15 hover:shadow-[0_0_40px_rgba(34,211,238,0.35)] active:scale-[0.98]"
+          >
+            <Download className="relative z-10 h-4 w-4" aria-hidden />
+            <span className="relative z-10">Download Resume</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </a>
         </motion.div>
 

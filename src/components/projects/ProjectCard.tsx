@@ -30,7 +30,9 @@ export function ProjectCard({ project, index }: Props) {
       <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-slate-50">
         {project.title}
       </h3>
-      <p className="mt-3 flex-1 text-slate-400 leading-relaxed">{project.description}</p>
+      <p className="mt-3 flex-1 text-slate-400 leading-relaxed">
+        {project.description}
+      </p>
 
       <div className="mt-5 flex flex-wrap gap-2">
         {project.stack.map((t) => (
@@ -49,7 +51,7 @@ export function ProjectCard({ project, index }: Props) {
       </p>
 
       {hasActions && (
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex gap-3">
           {hasGithub && (
             <a
               href={links.github}

@@ -8,6 +8,11 @@ import {
   skillCategories,
   experiences,
   achievements,
+  personality,
+  useCases,
+  differentiators,
+  concepts,
+  goals,
 } from "../../../../data/manishProfile";
 
 export const runtime = "nodejs";
@@ -20,9 +25,14 @@ type ChatRequestBody = {
 function buildSystemPrompt(): string {
   const context = {
     owner,
+    personality,
     highlights,
     journey,
     projects,
+    useCases,
+    differentiators,
+    concepts,
+    goals,
     skillCategories,
     experiences,
     achievements,

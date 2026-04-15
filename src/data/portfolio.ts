@@ -77,6 +77,7 @@ export const skillCategories = [
     name: "AI Engineering",
     items: [
       "Python",
+      "Playwright Automation",
       "Typescript",
       "LLMs",
       "RAG",
@@ -125,6 +126,7 @@ export const projects: Project[] = [
       "Enterprise AI platform evolved from a productivity tool into an intelligent assistant using LLMs, RAG pipelines, RAG Agents and knowledge graphs.",
     stack: [
       "Python",
+      "Playwright",
       "Next.js",
       "Node.js",
       "TypeScript",
@@ -158,32 +160,6 @@ Shipped features that reduced repetitive manual work, improved response quality 
     architecture: `The platform follows a **BTP-hosted** topology: a Next.js-style front end (Material Tailwind / shadcn patterns) talks to Node services that orchestrate LLM calls, retrieval, and integrations. Vector and relational data live in **S/4 HANA–aligned** stores, with retrieval blending structured queries and semantic search. Agents are composed as graphs so steps remain inspectable and auditable—important in regulated enterprise settings.`,
     challenges: `Balancing **latency vs. depth** in RAG (more context is not always better), hardening prompts and tools for production misuse, and aligning UX expectations (“chat”) with operational reality (permissions, data freshness, and traceability).`,
     learnings: `**Evaluation loops** matter as much as model choice—golden sets, human review, and logging close the gap between demo and dependable assistant. Treating the assistant as a **workflow participant** (not just Q&A) unlocked the most durable wins.`,
-  },
-  {
-    title: "AI Assistant System",
-    description:
-      "LLM-powered assistant using retrieval-augmented generation to answer SAP PAPM enterprise queries with contextual grounding.",
-    stack: ["Python", "LangGraph", "RAG Agent", "HANA Vector DB"],
-    impact:
-      "Improved response accuracy and reduced repetitive internal support queries through intelligent automation.",
-    kind: "case-study",
-    links: {
-      caseStudy: "ai-assistant-system",
-      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/chatbot",
-    },
-    caseStudyContent: `## Problem
-
-Teams needed **grounded answers** over SAP PAPM enterprise data—generic LLM replies were not acceptable when correctness and citations matter.
-
-## Approach
-
-A **RAG Agent** pipeline retrieves from HANA vector stores, applies relevance filtering, and synthesizes responses with explicit references to retrieved context. LangGraph structures the flow so retrieval, tool use, and final answering stay modular and testable.
-
-## Results
-
-Higher answer quality and fewer repeated support tickets, with a path to extend tools as new data sources come online.`,
-    challenges: `Getting retrieval to return **precise chunks** for niche enterprise questions without blowing token budgets.`,
-    learnings: `Small, focused tool surfaces beat one giant prompt—**composability** wins in production agents.`,
   },
   {
     title: "MSG Sports",

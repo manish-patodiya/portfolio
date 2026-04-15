@@ -1,18 +1,33 @@
 export const owner = {
   name: "Manish Patodiya",
   role: "AI Engineer & Full Stack Developer",
+  location: "Bengaluru, India",
   tagline:
-    "Building enterprise-grade AI systems with LLMs, agents, and intelligent automation",
+    "Building enterprise-grade AI systems with LLMs, RAG, and intelligent automation",
   summary:
-    "AI Engineer specializing in Generative AI, RAG systems, and enterprise AI platforms. Experienced in building scalable AI solutions using LangGraph, hybrid retrieval (vector + BM25 + knowledge graphs), and SAP AI infrastructure for real-world business applications.",
+    "AI Engineer with a strong full stack background, specializing in Generative AI, RAG systems, and enterprise AI platforms. Experienced in building production-grade AI solutions using LangGraph, hybrid retrieval (vector + BM25 + knowledge graphs), and SAP AI infrastructure for real-world business applications.",
+  experienceSummary:
+    "Full Stack Developer turned AI Engineer with hands-on experience in production systems, cloud, and enterprise AI automation.",
+};
+
+export const personality = {
+  tone: "confident, practical, and clear",
+  style:
+    "Explains complex AI systems in simple terms using real-world examples",
+  traits: ["problem-solver", "system thinker", "focused on real-world impact"],
+  speakingStyleExamples: [
+    "Think of RAG as giving LLMs access to your company’s internal knowledge base.",
+    "I focus more on systems that actually get used in production rather than just demos.",
+  ],
 };
 
 export const highlights = [
   "Built LangGraph-based RAG agents with multi-step reasoning and tool execution",
-  "Designed hybrid retrieval systems combining vector search, BM25, and knowledge graphs",
-  "Developed AI evaluation pipelines for testing and validating LLM performance",
-  "Implemented stateful AI systems with memory and checkpointing on SAP HANA",
-  "Built enterprise AI platforms used by 100+ stakeholders",
+  "Designed hybrid retrieval systems (vector + BM25 + knowledge graphs)",
+  "Developed AI evaluation pipelines for LLM validation",
+  "Implemented stateful AI systems with memory on SAP HANA",
+  "Built enterprise AI platforms used by 150+ stakeholders",
+  "Handled real-world production systems, debugging, and client-facing deployments",
 ];
 
 export const journey = [
@@ -20,37 +35,37 @@ export const journey = [
     title: "Early Curiosity",
     period: "Schooling (Rajasthan)",
     description:
-      "Developed strong analytical thinking and curiosity about computers, leading to interest in software and intelligent systems.",
+      "Developed analytical thinking and curiosity about computers, leading to interest in software and intelligent systems.",
   },
   {
     title: "Programming Foundations",
-    period: "BCA",
+    period: "BCA (2018–2021)",
     description:
-      "Built core fundamentals in C, C++, Java, DBMS, and system-level concepts. Developed early applications and gained exposure to DSA and real-world coding practices.",
+      "Built strong foundations in C, C++, Java, DBMS, and DSA. Developed problem-solving mindset and core computer science understanding.",
   },
   {
     title: "Industry Entry",
-    period: "GeeksIT Data Solutions",
+    period: "GeeksIT Data Solutions (2021–2022)",
     description:
-      "Worked as a Full Stack Developer building production applications using PHP, JavaScript, MySQL, and AWS. Developed APIs, handled deployments, and contributed to real-world systems.",
+      "Worked as a Full Stack Developer on production systems including healthcare SaaS platforms like Evaidyak. Gained experience in APIs, AWS services, multi-tenant systems, and real client handling.",
   },
   {
     title: "Engineering Growth",
-    period: "MCA",
+    period: "MCA (2022–2024)",
     description:
-      "Strengthened DSA, system design, and communication skills. Won multiple hackathons and achieved strong academic performance (CGPA 9.49).",
+      "Strengthened DSA, system design, and communication skills. Won hackathons and secured placement at MSG Global.",
   },
   {
     title: "Enterprise Development",
-    period: "MSG Global Solutions (Internship)",
+    period: "MSG Global Solutions - Internship (2024)",
     description:
-      "Built MSG Sports platform used by 200+ employees. Gained experience in SAP ecosystem and enterprise application architecture.",
+      "Built MSG Sports platform, reducing manual effort by 80%. Worked within SAP ecosystem and mentored interns.",
   },
   {
-    title: "AI Engineering & System Design",
-    period: "MSG Global Solutions (Full-Time)",
+    title: "AI Engineering",
+    period: "MSG Global Solutions - Full Time (2024–Present)",
     description:
-      "Built Snow-Vision and AI systems using LLMs, RAG, LangGraph, and SAP AI infrastructure. Transitioned into AI Engineer role focusing on enterprise automation and intelligent systems.",
+      "Built Snow-Vision and transitioned into AI Engineering. Focused on RAG systems, AI agents, and SAP-integrated enterprise AI platforms.",
   },
 ];
 
@@ -64,6 +79,7 @@ export const skillCategories = [
       "LangGraph",
       "AI Agents",
       "GraphRAG",
+      "Hybrid Retrieval",
       "Vector Search",
       "BM25",
       "Knowledge Graphs",
@@ -81,7 +97,7 @@ export const skillCategories = [
   },
   {
     name: "Full Stack Development",
-    items: ["React", "Next.js", "Node.js", "TypeScript", "Express"],
+    items: ["React", "Next.js", "Node.js", "TypeScript", "PHP"],
   },
   {
     name: "Enterprise & SAP",
@@ -96,11 +112,18 @@ export const skillCategories = [
   },
   {
     name: "Backend & Databases",
-    items: ["REST APIs", "SQL", "MySQL", "HANA", "System Design"],
+    items: [
+      "REST APIs",
+      "System Design",
+      "MySQL",
+      "SAP HANA",
+      "Vector Databases",
+      "Multi-tenant Systems",
+    ],
   },
   {
     name: "Cloud & DevOps",
-    items: ["Docker", "AWS (S3, SES, SNS)", "Deployments"],
+    items: ["AWS (S3, SES, SNS)", "Docker", "Deployments"],
   },
 ];
 
@@ -108,34 +131,33 @@ export const projects = [
   {
     title: "Snow-Vision",
     description:
-      "Enterprise AI platform evolved from a productivity tool into an intelligent assistant using LLMs, RAG pipelines, RAG Agents and knowledge graphs.",
+      "Snow-Vision is an end-to-end enterprise platform designed to unify ServiceNow and JIRA workflows, automate RCA processes, and enhance L2 support efficiency using AI. It integrates ticket data into a centralized system, provides SLA tracking, analytics, and introduces a RAG-based AI agent for intelligent query resolution. Additionally, it includes shift management, handover notifications, and workload tracking to streamline night support operations and improve team productivity.",
     stack: [
       "Python",
-      "Next.js",
-      "Node.js",
-      "TypeScript",
+      "LangChain",
       "LangGraph",
-      "S/4 HANA DB",
+      "Node.js",
+      "Next.js",
       "SAP BTP",
+      "SAP AI Core",
+      "SAP HANA",
+      "Playwright",
+      "Vector Database",
+      "BM25",
+      "Knowledge Graphs",
+      "Microsoft Teams Integration",
     ],
-    impact:
-      "Reduced manual workflows, enabled AI-powered decision support, and improved internal operational efficiency.",
-    links: {
-      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/",
-      caseStudy: "/portfolio/snow-vision",
-    },
-  },
-  {
-    title: "AI Assistant System",
-    description:
-      "LLM-powered assistant using retrieval-augmented generation to answer SAP PAPM enterprise queries with contextual grounding.",
-    stack: ["Python", "LangGraph", "RAG Agent", "HANA Vector DB"],
-    impact:
-      "Improved response accuracy and reduced repetitive internal support queries through intelligent automation.",
-    links: {
-      demo: "https://snow-vision-approuter-prod.cfapps.ap10.hana.ondemand.com/chatbot",
-      caseStudy: "/portfolio/ai-assistant-system",
-    },
+    impact: [
+      "Used by 150+ stakeholders across teams",
+      "Reduced RCA manual effort by ~80%",
+      "Prevented SLA breaches through proactive alerting system",
+      "Unified ServiceNow and JIRA tracking into a single platform",
+      "Automated JIRA ticket creation workflow",
+      "Enabled AI-driven ticket resolution using historical and contextual data",
+      "Streamlined night support operations with shift scheduling and handover notifications",
+      "Provided workload and payroll insights through tracking and analytics",
+      "Recognized with 'Innovation of the Year' award",
+    ],
   },
   {
     title: "MSG Sports",
@@ -149,6 +171,28 @@ export const projects = [
       caseStudy: "/portfolio/msg-sports",
     },
   },
+  {
+    title: "Evaidyak",
+    description:
+      "Healthcare SaaS platform with multi-clinic architecture, AWS integrations, and payment systems.",
+    stack: ["PHP", "MySQL", "AWS"],
+    impact:
+      "Production-grade system used by multiple clinics with real users and payment handling.",
+  },
+];
+
+export const useCases = [
+  "Enterprise knowledge retrieval using RAG systems",
+  "AI assistants for SAP and banking workflows",
+  "Automation of internal support queries using LLMs",
+  "Hybrid search systems for accurate information retrieval",
+];
+
+export const differentiators = [
+  "Focus on production-grade AI systems, not prototypes",
+  "Strong combination of full stack + AI engineering",
+  "Hands-on SAP AI ecosystem experience",
+  "Experience with real-world clients and production debugging",
 ];
 
 export const achievements = [
@@ -164,7 +208,7 @@ export const achievements = [
   },
   {
     label: "Hackathon Wins",
-    value: "2×",
+    value: "5×",
     detail: "Multiple wins in competitive coding events",
   },
 ];
@@ -195,3 +239,28 @@ export const experiences = [
     tech: ["JavaScript", "PHP", "MySQL", "AWS"],
   },
 ];
+
+export const concepts = [
+  {
+    name: "RAG",
+    explanation:
+      "Retrieval-Augmented Generation is a technique where LLMs fetch relevant data before generating responses, improving accuracy and grounding.",
+  },
+  {
+    name: "LangGraph",
+    explanation:
+      "Framework for building stateful AI agents with multi-step reasoning, memory, and tool execution.",
+  },
+  {
+    name: "Hybrid Retrieval",
+    explanation:
+      "Combines vector search, keyword search (BM25), and knowledge graphs to improve retrieval accuracy.",
+  },
+];
+
+export const goals = {
+  shortTerm:
+    "Deepen expertise in agentic AI systems and large-scale AI architectures",
+  longTerm:
+    "Build impactful enterprise AI platforms that transform business workflows globally",
+};

@@ -7,6 +7,9 @@ import { MessageCircle, Send, Sparkles, X } from "lucide-react";
 import { useChat } from "@/hooks/useChat";
 import { ChatMarkdown } from "@/components/ChatMarkdown";
 
+const LAUNCHER_ACK_STORAGE_KEY = "portfolio-ai-chat-launcher-ack";
+const LAUNCHER_TOOLTIP_ID = "portfolio-ai-chat-launcher-tooltip";
+
 const SUGGESTED = [
   "Introduce yourself",
   "What is Snow-Vision?",
@@ -37,13 +40,32 @@ function TypingDots() {
 export function AIChatbot() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [showLauncherHint, setShowLauncherHint] = useState(false);
   const { messages, sendMessage, loading, error, clearError } = useChat();
   const bottomRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    try {
+      const ack = window.localStorage.getItem(LAUNCHER_ACK_STORAGE_KEY);
+      setShowLauncherHint(ack !== "1");
+    } catch {
+      setShowLauncherHint(false);
+    }
+  }, []);
+
+  useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading, open]);
+
+  function acknowledgeLauncher() {
+    setShowLauncherHint(false);
+    try {
+      window.localStorage.setItem(LAUNCHER_ACK_STORAGE_KEY, "1");
+    } catch {
+      // ignore
+    }
+  }
 
   async function handleSubmit(e?: SyntheticEvent) {
     e?.preventDefault();
@@ -64,24 +86,82 @@ export function AIChatbot() {
     <>
       <AnimatePresence>
         {!open && (
-          <motion.button
-            type="button"
+          <motion.div
             key="chat-launcher"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            role="presentation"
+            className="fixed z-50 flex max-w-[min(calc(100vw-2.5rem),280px)] flex-col items-end gap-2 [bottom:20px] [right:20px]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            onClick={() => {
-              setOpen(true);
-              clearError();
-            }}
-            className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-[0_0_48px_rgba(139,92,246,0.5)] ring-2 ring-cyan-400/30 [bottom:20px] [right:20px]"
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.96 }}
-            aria-label="Open chat with Manish"
           >
-            <MessageCircle className="h-6 w-6" />
-          </motion.button>
+            <AnimatePresence>
+              {showLauncherHint && (
+                <motion.div
+                  key="launcher-tooltip"
+                  id={LAUNCHER_TOOLTIP_ID}
+                  role="tooltip"
+                  initial={{ opacity: 0, y: 6, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.98 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative mr-0.5 rounded-xl border border-cyan-500/35 bg-[#0a0a0a]/95 px-3.5 py-2.5 text-left shadow-[0_8px_32px_rgba(0,0,0,0.45),0_0_0_1px_rgba(34,211,238,0.12)] backdrop-blur-md"
+                >
+                  <div className="flex items-start gap-2">
+                    <span
+                      className="mt-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-md bg-cyan-500/15 px-1 text-[10px] font-semibold uppercase tracking-wide text-cyan-200"
+                      aria-hidden
+                    >
+                      New
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold text-slate-100">
+                        Portfolio AI chat
+                      </p>
+                      <p className="mt-0.5 text-[11px] leading-snug text-slate-400">
+                        Ask about work, skills, and projects — answers use this
+                        site&apos;s public profile context.
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    className="absolute -bottom-1 right-6 h-2 w-2 rotate-45 border-b border-r border-cyan-500/35 bg-[#0a0a0a]/95"
+                    aria-hidden
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <div className="relative shrink-0">
+              {showLauncherHint && (
+                <span
+                  className="absolute -right-0.5 -top-0.5 z-10 h-2.5 w-2.5 rounded-full border-2 border-[#0a0a0a] bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.85)]"
+                  aria-hidden
+                />
+              )}
+              <motion.button
+                type="button"
+                initial={{ scale: 0.88 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.92 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                onClick={() => {
+                  acknowledgeLauncher();
+                  setOpen(true);
+                  clearError();
+                }}
+                className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-[0_0_48px_rgba(139,92,246,0.5)] ring-2 ring-cyan-400/30"
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.96 }}
+                aria-label="Open chat with Manish"
+                aria-describedby={
+                  showLauncherHint ? LAUNCHER_TOOLTIP_ID : undefined
+                }
+              >
+                <MessageCircle className="h-6 w-6" />
+              </motion.button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 

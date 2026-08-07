@@ -129,6 +129,107 @@ export const skillCategories = [
 
 export const projects = [
   {
+    title: "AI Regulatory Intelligence Platform",
+    description:
+      "Enterprise AI platform for MSG Banking that accelerates AnaCredit regulatory reporting through an AI-powered Regulatory Knowledge Engine and SmartFilter. The platform reduces consultant dependency by providing evidence-based correction recommendations, regulatory guidance, and human-auditable AI workflows before data reaches BAIS.",
+    stack: [
+      "Python",
+      "FastAPI",
+      "LangGraph",
+      "LangChain",
+      "AWS Bedrock",
+      "Ollama",
+      "PostgreSQL",
+      "pgvector",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Docker",
+      "BM25",
+      "Re-ranker",
+      "Tavily Search",
+      "GLEIF API",
+    ],
+    impact:
+      "Reduced regulatory data remediation from days to hours by replacing manual consultant workflows with AI-assisted validation, evidence-backed recommendations, and automated correction pipelines. A prototype successfully resolved 100% of identified counterparty validation errors while reducing BAIS processing iterations.",
+    kind: "enterprise",
+    links: {
+      caseStudy: "ai-regulatory-intelligence-platform",
+    },
+
+    caseStudyContent: `## Problem
+  
+  European banks use **BAIS (Banking Supervision Information System)** to prepare and submit regulatory reports such as **AnaCredit** to the European Central Bank (ECB). While BAIS validates regulatory data, every upload can take several hours because validation occurs during processing. Any detected anomalies require consultants with specialized BAIS and regulatory expertise to manually investigate documentation, search external reference sources, correct CSV files, and repeat the upload process.
+  
+  This created several business challenges:
+  
+  - High dependency on expensive regulatory consultants.
+  - Long validation and correction cycles caused by BAIS processing.
+  - Manual investigation across thousands of pages of documentation and external regulatory websites.
+  - Complex regulatory rules requiring significant domain expertise before productive work could begin.
+  
+  ## Solution
+  
+  I designed and led development of an **AI Regulatory Intelligence Platform** that shifts regulatory validation and correction **before BAIS**.
+  
+  The platform consists of two complementary AI systems.
+  
+  ### Regulatory Knowledge Engine
+  
+  Before developing SmartFilter, our engineering team first needed to understand a highly specialized regulatory domain. I built an enterprise knowledge platform capable of reasoning over BAIS interface documentation, ECB regulations, validation rules, database schemas, master reference datasets, PDFs, Excel files, and external regulatory sources.
+  
+  The system uses hybrid retrieval, semantic search, BM25 ranking, reranking, and context-aware chunking to provide accurate, citation-backed answers for both developers and business users. It is now integrated directly into SmartFilter so users can obtain regulatory guidance without leaving the application.
+  
+  ### SmartFilter
+  
+  SmartFilter is an AI-assisted regulatory data remediation platform that validates uploaded AnaCredit datasets before they are submitted to BAIS.
+  
+  Instead of waiting hours for BAIS validation, SmartFilter executes regulatory validation rules locally, detects anomalies, retrieves trusted evidence, and generates explainable correction recommendations.
+  
+  Recommendations remain fully human-controlled and include confidence scores, supporting evidence, regulatory reasoning, and complete audit history before exporting a corrected CSV back into BAIS.`,
+
+    architecture: `### Validation Engine
+  
+  - Implemented an independent ECB/AnaCredit validation engine by translating regulatory documentation into executable validation rules.
+  - Detects validation failures before BAIS processing begins.
+  - Validation rule library designed for extensibility and maintainability.
+  
+  ### Regulatory Knowledge Engine
+  
+  - Hybrid RAG pipeline built over BAIS documentation, interface specifications, validation rules, PostgreSQL schemas, PDFs, Excel files, and master reference datasets.
+  - Context-aware chunking combined with recursive chunking for improved retrieval quality.
+  - BM25 retrieval, vector search, reranking, and metadata filtering improve both accuracy and latency.
+  - Embedded directly into SmartFilter for contextual regulatory assistance.
+  
+  ### AI Recommendation Engine
+  
+  - LangGraph-based agent orchestrates evidence retrieval and recommendation generation.
+  - Dynamically selects tools including GLEIF, ECB reference data, Tavily Search, internal knowledge base, and master tables depending on the validation scenario.
+  - Supports both attribute-level correction and complete counterparty-level reasoning.
+  - Generates suggested values together with confidence scores, evidence, and regulatory explanations.
+  
+  ### Application Platform
+  
+  - Next.js frontend for CSV upload, validation dashboards, recommendation review, audit history, and corrected CSV export.
+  - FastAPI backend orchestrating validation, AI workflows, and recommendation services.
+  - PostgreSQL stores uploaded datasets, validation results, recommendations, audit history, conversation history, and master reference data.
+  - pgvector powers semantic retrieval for the knowledge engine.
+  - AWS Bedrock and Ollama provide enterprise LLM inference.`,
+
+    challenges: `- Learning an entirely new regulatory domain involving thousands of pages of BAIS documentation and ECB regulatory specifications.
+  - Converting complex regulatory guidelines into an executable validation rule engine.
+  - Designing an agent capable of dynamically selecting trusted evidence sources instead of relying solely on LLM reasoning.
+  - Balancing deterministic validation logic with AI reasoning to maximize recommendation accuracy.
+  - Optimizing hybrid retrieval through semantic chunking, BM25, reranking, and metadata filtering while maintaining low latency.
+  - Building explainable AI recommendations suitable for highly regulated financial environments with complete auditability.`,
+
+    learnings: `- Enterprise AI systems are most effective when deterministic business logic and LLM reasoning complement each other rather than compete.
+  - Building reliable AI for regulated industries requires explainability, evidence, confidence scoring, and human approval instead of autonomous decision making.
+  - LangGraph enables flexible orchestration of multi-step AI workflows involving retrieval, external APIs, validation engines, and reasoning.
+  - Hybrid retrieval strategies significantly improve response quality for domain-specific knowledge bases.
+  - Understanding the business workflow is as important as model selection—successful AI products solve operational bottlenecks rather than simply adding conversational interfaces.`,
+  },
+  {
     title: "Snow-Vision",
     description:
       "End-to-end enterprise platform for SAP PAPM: centralizes ServiceNow and JIRA into SAP HANA, automates RCA, and surfaces SLA monitoring with Microsoft Teams alerts. It delivers rich analytics with interactive charts (ticket age, time distribution, trends, operational metrics) for product owners and stakeholders, and a RAG-based assistant—grounded in RCA history, tickets, JIRA, and PAPM documentation—that helps developers, support, product, and leadership ask questions about the app, incidents, and processes. Includes one-click JIRA creation, shift management, handovers, and workload visibility for operations and payroll-related insight.",

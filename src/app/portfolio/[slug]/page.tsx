@@ -3,10 +3,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { ChatMarkdown } from "@/components/ChatMarkdown";
+import { CaseStudyImage } from "@/components/projects/CaseStudyImage";
 import { Container } from "@/components/ui/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import type { ProjectKind } from "@/data/portfolio";
-import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects";
+import {
+  getProjectBySlug,
+  getAllProjectSlugs,
+  resolveProjectMedia,
+} from "@/lib/projects";
 
 function kindLabel(kind: ProjectKind): string {
   return kind === "case-study" ? "Case Study" : "Enterprise Project";
@@ -24,12 +29,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) {
     return { title: "Not found" };
   }
+
+  const media = resolveProjectMedia(slug);
+
   return {
     title: `${project.title} — Case Study | Manish Patodiya`,
     description: project.description,
     openGraph: {
       title: `${project.title} — Case Study`,
       description: project.description,
+      ...(media.cover ? { images: [{ url: media.cover }] } : {}),
     },
   };
 }
@@ -39,8 +48,11 @@ export default async function CaseStudyPage({ params }: Props) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
+  const media = resolveProjectMedia(slug);
   const body =
     project.caseStudyContent?.trim() || `## Summary\n\n${project.description}`;
+  const hasArchitectureSection =
+    Boolean(project.architecture?.trim()) || Boolean(media.architecture);
 
   return (
     <div className="min-h-[100dvh] px-4 pb-28 pt-28 md:px-6 md:pt-32">
@@ -62,6 +74,16 @@ export default async function CaseStudyPage({ params }: Props) {
           </h1>
           <p className="text-lg text-slate-400 md:text-xl">{project.description}</p>
         </header>
+
+        {media.cover && (
+          <div className="mt-10 max-w-3xl">
+            <CaseStudyImage
+              src={media.cover}
+              alt={`${project.title} screenshot`}
+              priority
+            />
+          </div>
+        )}
 
         <div className="mt-12 max-w-3xl border-t border-white/10 pt-12">
           <ChatMarkdown variant="article">{body}</ChatMarkdown>
@@ -85,9 +107,28 @@ export default async function CaseStudyPage({ params }: Props) {
             <p className="text-base leading-relaxed text-slate-300">{project.impact}</p>
           </SectionWrapper>
 
-          {project.architecture?.trim() && (
+          {media.flow && (
+            <SectionWrapper title="Flow" eyebrow="How it works">
+              <CaseStudyImage
+                src={media.flow}
+                alt={`${project.title} flow diagram`}
+              />
+            </SectionWrapper>
+          )}
+
+          {hasArchitectureSection && (
             <SectionWrapper title="Architecture" eyebrow="Deep dive">
-              <ChatMarkdown variant="article">{project.architecture.trim()}</ChatMarkdown>
+              {media.architecture && (
+                <CaseStudyImage
+                  src={media.architecture}
+                  alt={`${project.title} architecture`}
+                />
+              )}
+              {project.architecture?.trim() && (
+                <ChatMarkdown variant="article">
+                  {project.architecture.trim()}
+                </ChatMarkdown>
+              )}
             </SectionWrapper>
           )}
 
